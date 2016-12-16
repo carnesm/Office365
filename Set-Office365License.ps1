@@ -1,14 +1,4 @@
 ﻿Function Set-Office365License{
-    [CmdletBinding()]
-    param(
-    [parameter(mandatory=$true,Position=0)][string]$UserPrincipalName,
-    [parameter(mandatory=$false)][string]$Country,
-    [parameter(mandatory=$true)][string]$LicenseSku,
-    [switch]$AddLicense,
-    [switch]$RemoveLicense,
-    $Credential
-
-    )
 
 <#
   .SYNOPSIS
@@ -27,9 +17,6 @@
     Remove the specified license from the Msol user account.  Connects to Msol service with a prebuilt Credential object
     Set-Office365License -UserPrincipalName jdoe@fabrikam.com -RemoveLicense -LicenseSku 'fabrikam:ENTERPRISE' -Credential $Credential
 
-  .SYNTAX
-  Set-Office365License [-UserPrincipalName] <string> -LicenseSku <string> [-Country <string>] [-AddLicense] [-RemoveLicense] [-Credential <Object>]  [<CommonParameters>]
-
   .PARAMETER UserPrincipalName
   The Active Directory UserPrincipalName for the user
 
@@ -47,7 +34,18 @@
 
   .PARAMETER Credential
   Credential object used to connect to the Msol Service with user account management permissions
-  #>    
+  #>
+    [CmdletBinding()]
+    param(
+    [parameter(mandatory=$true,Position=0)][string]$UserPrincipalName,
+    [parameter(mandatory=$false)][string]$Country,
+    [parameter(mandatory=$true)][string]$LicenseSku,
+    [switch]$AddLicense,
+    [switch]$RemoveLicense,
+    $Credential
+
+    )
+    
 
     BEGIN{
         
